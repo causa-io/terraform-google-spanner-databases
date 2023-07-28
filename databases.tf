@@ -13,6 +13,7 @@ locals {
 resource "google_spanner_database" "database" {
   for_each = local.database_configurations
 
+  project  = local.gcp_project_id
   instance = google_spanner_instance.instance.name
   name     = each.value.id
   ddl      = each.value.ddls

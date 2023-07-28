@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.1.1 (2023-07-28)
+
 Fixes:
 
 - Set the GCP project on the Spanner database resources according to the configuration.

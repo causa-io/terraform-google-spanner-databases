@@ -3,6 +3,11 @@ variable "infrastructure_configuration_file" {
   description = "The path to the configuration file for the infrastructure project. It should be in JSON or YAML."
 }
 
+variable "databases_directory" {
+  type        = string
+  description = "The path to the directory containing the Spanner database configurations."
+}
+
 variable "gcp_project_id" {
   type        = string
   description = "The GCP project ID in which resources will be placed. Defaults to the `google.project` configuration."

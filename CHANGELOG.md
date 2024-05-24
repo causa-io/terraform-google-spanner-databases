@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+Features:
+
+- Support instance autoscaling.
+
 ## v0.1.2 (2024-02-21)
 
 Chores:

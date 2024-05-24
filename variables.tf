@@ -32,6 +32,17 @@ variable "instance_processing_units" {
   default     = null
 }
 
+variable "instance_autoscaling" {
+  type = object({
+    max_processing_units                 = optional(number)
+    min_processing_units                 = optional(number)
+    high_priority_cpu_utilization_target = optional(number)
+    storage_utilization_target           = optional(number)
+  })
+  description = "The autoscaling configuration for the Cloud Spanner instance. Targets are in percent. Defaults to the `google.spanner.instance.autoscaling` configuration."
+  default     = null
+}
+
 variable "deletion_protection" {
   type        = bool
   description = "Whether the Cloud Spanner instance and its databases are protected against deletion. Defaults to `true`."

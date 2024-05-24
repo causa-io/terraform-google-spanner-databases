@@ -11,7 +11,7 @@ This module depends on the [google Terraform provider](https://registry.terrafor
 Copy the following in your Terraform configuration, and run `terraform init`:
 
 ```terraform
-module "my_service" {
+module "my_databases" {
   source  = "causa-io/spanner-databases/google"
   version = "<insert the most recent version number here>"
 
@@ -27,6 +27,36 @@ module "my_service" {
 ### Spanner instance
 
 This module creates and manages a Spanner instance. Its configuration can be loaded from the `google.spanner.instance` configuration in the infrastructure project (or its parent workspace configuration), which should be set in the `infrastructure_configuration_file` Terraform variable. The configuration can also be overridden using standard Terraform variables, see the descriptions in the [corresponding file](./variables.tf).
+
+Autoscaling can be enabled for the instance either in the Causa configuration:
+
+```yaml
+google:
+  spanner:
+    instance:
+      # Autoscaling will be enabled as long as this property is an object.
+      autoscaling:
+        # All properties are optional.
+        minProcessingUnits: 1000
+        maxProcessingUnits: 10000
+        highPriorityCpuUtilizationTarget: 65
+        storageUtilizationTarget: 90
+```
+
+or as a Terraform variable:
+
+```terraform
+module "my_databases" {
+  # ...
+
+  instance_autoscaling = {
+    max_processing_units                 = 1000
+    min_processing_units                 = 10000
+    high_priority_cpu_utilization_target = 65
+    storage_utilization_target           = 90
+  }
+}
+```
 
 ### Spanner databases
 

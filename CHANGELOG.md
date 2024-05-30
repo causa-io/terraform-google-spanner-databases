@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+Features:
+
+- Support setting the database version retention period for all databases.
+
 ## v0.2.0 (2024-05-24)
 
 Features:

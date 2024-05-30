@@ -62,6 +62,8 @@ module "my_databases" {
 
 A Spanner database is created and managed for each database configuration file written by the [`GoogleSpannerWriteDatabases`](https://github.com/causa-io/workspace-module-google#googlespannerwritedatabases) processor at the location set in the `databases_directory` Terraform variable. The databases are found in the workspace as defined in the `google.spanner.ddls` configuration.
 
+The [retention version period](https://cloud.google.com/spanner/docs/pitr) for all databases can be set using the `google.spanner.versionRetentionPeriod` configuration or the `database_version_retention_period` Terraform variable. If per-database configuration is needed, the version retention period should be defined in the database DDL instead.
+
 ### Deletion protection
 
 The `deletion_protection` Terraform variable defaults to `true` and protects both the instance and its databases. It can be set to `false` when it is okay to delete the databases (e.g. in development environments).

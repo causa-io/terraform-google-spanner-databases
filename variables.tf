@@ -32,6 +32,12 @@ variable "instance_processing_units" {
   default     = null
 }
 
+variable "database_version_retention_period" {
+  type        = string
+  description = "The retention period for the database. Defaults to the `google.spanner.versionRetentionPeriod` configuration. For database-level configuration, set the period in the DDL instead."
+  default     = null
+}
+
 variable "instance_autoscaling" {
   type = object({
     max_processing_units                 = optional(number)

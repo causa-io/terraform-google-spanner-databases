@@ -18,5 +18,7 @@ resource "google_spanner_database" "database" {
   name     = each.value.id
   ddl      = each.value.ddls
 
+  version_retention_period = local.database_version_retention_period
+
   deletion_protection = var.deletion_protection
 }

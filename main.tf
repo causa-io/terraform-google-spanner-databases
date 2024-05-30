@@ -16,6 +16,8 @@ locals {
   conf_autoscaling_high_priority_cpu_utilization_target = try(local.conf_autoscaling.highPriorityCpuUtilizationTarget, null)
   conf_autoscaling_storage_utilization_target           = try(local.conf_autoscaling.storageUtilizationTarget, null)
 
+  conf_database_version_retention_period = try(local.conf_spanner.versionRetentionPeriod, null)
+
   # Configuration with variable overrides.
   gcp_project_id            = coalesce(var.gcp_project_id, local.conf_google_project)
   instance_name             = coalesce(var.instance_name, local.conf_instance_name)
@@ -30,4 +32,8 @@ locals {
       storage_utilization_target           = local.conf_autoscaling_storage_utilization_target
     }
   ) : null
+  database_version_retention_period = try(
+    coalesce(var.database_version_retention_period, local.conf_database_version_retention_period),
+    null,
+  )
 }

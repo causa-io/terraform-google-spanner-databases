@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+Chores:
+
+- Upgrade compatible `google` provider versions to support `7.*.*`.
+
 ## v0.3.1 (2024-08-30)
 
 Chores:

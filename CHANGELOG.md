@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.4.0 (2026-01-21)
+
 Features:
 
 - Support configuring the instance edition. Defaults to standard, unless autoscaling is enabled, in which case it defaults to enterprise.

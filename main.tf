@@ -15,6 +15,7 @@ locals {
   conf_autoscaling_min_processing_units                 = try(local.conf_autoscaling.minProcessingUnits, null)
   conf_autoscaling_high_priority_cpu_utilization_target = try(local.conf_autoscaling.highPriorityCpuUtilizationTarget, null)
   conf_autoscaling_storage_utilization_target           = try(local.conf_autoscaling.storageUtilizationTarget, null)
+  conf_instance_edition                                 = try(local.conf_spanner_instance.edition, null)
 
   conf_database_version_retention_period = try(local.conf_spanner.versionRetentionPeriod, null)
 
@@ -35,5 +36,10 @@ locals {
   database_version_retention_period = try(
     coalesce(var.database_version_retention_period, local.conf_database_version_retention_period),
     null,
+  )
+  instance_edition = coalesce(
+    var.instance_edition,
+    local.conf_instance_edition,
+    local.instance_autoscaling != null ? "ENTERPRISE" : "STANDARD",
   )
 }

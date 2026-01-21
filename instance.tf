@@ -4,6 +4,7 @@ resource "google_spanner_instance" "instance" {
   config       = local.instance_configuration
   name         = local.instance_name
   display_name = local.instance_name
+  edition      = local.instance_edition
 
   processing_units = local.instance_autoscaling == null ? local.instance_processing_units : null
 

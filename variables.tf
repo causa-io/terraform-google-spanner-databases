@@ -49,6 +49,12 @@ variable "instance_autoscaling" {
   default     = null
 }
 
+variable "instance_edition" {
+  type        = string
+  description = "The edition for the Cloud Spanner instance. Defaults to the `google.spanner.instance.edition` configuration. If not set, defaults to `STANDARD` when autoscaling is disabled, or `ENTERPRISE` when autoscaling is enabled."
+  default     = null
+}
+
 variable "deletion_protection" {
   type        = bool
   description = "Whether the Cloud Spanner instance and its databases are protected against deletion. Defaults to `true`."

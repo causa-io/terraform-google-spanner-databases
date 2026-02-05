@@ -21,4 +21,13 @@ resource "google_spanner_database" "database" {
   version_retention_period = local.database_version_retention_period
 
   deletion_protection = var.deletion_protection
+
+  dynamic "timeouts" {
+    for_each = local.database_timeout != null ? [1] : []
+
+    content {
+      create = local.database_timeout
+      update = local.database_timeout
+    }
+  }
 }

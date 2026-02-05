@@ -18,6 +18,7 @@ locals {
   conf_instance_edition                                 = try(local.conf_spanner_instance.edition, null)
 
   conf_database_version_retention_period = try(local.conf_spanner.versionRetentionPeriod, null)
+  conf_database_timeout                  = try(local.conf_spanner.databaseDdlTimeout, null)
 
   # Configuration with variable overrides.
   gcp_project_id            = coalesce(var.gcp_project_id, local.conf_google_project)
@@ -35,6 +36,10 @@ locals {
   ) : null
   database_version_retention_period = try(
     coalesce(var.database_version_retention_period, local.conf_database_version_retention_period),
+    null,
+  )
+  database_timeout = try(
+    coalesce(var.database_timeout, local.conf_database_timeout),
     null,
   )
   instance_edition = coalesce(

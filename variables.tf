@@ -55,6 +55,12 @@ variable "instance_edition" {
   default     = null
 }
 
+variable "database_timeout" {
+  type        = string
+  description = "The timeout for create and update operations on the Cloud Spanner databases. Defaults to the `google.spanner.databaseDdlTimeout` configuration. This can be increased for databases with DDLs that take a long time to apply."
+  default     = null
+}
+
 variable "deletion_protection" {
   type        = bool
   description = "Whether the Cloud Spanner instance and its databases are protected against deletion. Defaults to `true`."

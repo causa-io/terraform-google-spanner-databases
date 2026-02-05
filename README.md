@@ -64,6 +64,10 @@ A Spanner database is created and managed for each database configuration file w
 
 The [retention version period](https://cloud.google.com/spanner/docs/pitr) for all databases can be set using the `google.spanner.versionRetentionPeriod` configuration or the `database_version_retention_period` Terraform variable. If per-database configuration is needed, the version retention period should be defined in the database DDL instead.
 
+### Database timeout
+
+Spanner DDL operations can sometimes take a long time to apply, which may cause Terraform to timeout. The timeout for create and update operations on database resources can be configured using the `google.spanner.databaseDdlTimeout` configuration or the `database_timeout` Terraform variable. It accepts a string duration, e.g. `"60m"`.
+
 ### Deletion protection
 
 The `deletion_protection` Terraform variable defaults to `true` and protects both the instance and its databases. It can be set to `false` when it is okay to delete the databases (e.g. in development environments).

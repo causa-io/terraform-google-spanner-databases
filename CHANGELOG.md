@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+Features:
+
+- Support configuring a timeout for database create and update operations.
+
 ## v0.4.0 (2026-01-21)
 
 Features:
